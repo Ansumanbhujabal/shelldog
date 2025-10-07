@@ -1,0 +1,9 @@
+[2025-10-07 14:46:49] [ -n "$ZSH_VERSION" ]
+[2025-10-07 14:46:49] export SHELLDOG_ACTIVE=1
+[2025-10-07 14:47:06] export abc=****
+[2025-10-07 14:47:12] export okkk=****
+[2025-10-07 14:47:23] pip install flask
+[2025-10-07 14:51:09] clear
+[2025-10-07 14:51:44] git init
+[2025-10-07 14:52:02] git status
+[2025-10-07 14:52:28] git remote -v
