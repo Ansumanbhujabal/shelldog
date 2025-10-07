@@ -7,3 +7,15 @@
 [2025-10-07 14:51:44] git init
 [2025-10-07 14:52:02] git status
 [2025-10-07 14:52:28] git remote -v
+[2025-10-07 14:53:31] git commit -m " initil plan added "
+[2025-10-07 14:54:01] git commit -m " init file  added "
+[2025-10-07 14:54:13] git commit -m " cli file  added "
+[2025-10-07 14:54:35] git commit -m " logger file  added "
+[2025-10-07 14:54:50] git commit -m " hook file  added "
+[2025-10-07 14:54:59] git add .gitignore
+[2025-10-07 14:55:11] git commit -m " ignore file  added "
+[2025-10-07 14:55:17] clear
+[2025-10-07 14:55:26] git push origin main
+[2025-10-07 14:55:38] git pull
+[2025-10-07 14:57:30] git pull --rebase
+[2025-10-07 14:57:38] git status
