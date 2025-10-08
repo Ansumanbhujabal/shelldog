@@ -4,69 +4,198 @@
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-> **Never forget what you did. Always know where you've been. Your faithful shell companion has your back!**
+> *Your loyal companion for tracking shell commands - because every good developer needs a faithful friend who remembers everything!*
 
-Shelldog is like having a loyal puppy that silently follows your every command (the good, the bad, and the "I-have-no-idea-what-this-does" ones). It's a development tool that automatically tracks your shell commands while keeping sensitive information safe.
+```
+    /\_/\  
+   ( o.o ) 
+    > ^ <   "Woof! I'm watching... silently."
+```
 
-## 🎯 What Problem Does Shelldog Solve?
+**Shelldog** is a silent, intelligent command tracker for your terminal. Think of it as your development diary that writes itself - tracking every command you run, so you never have to remember "what did I do yesterday?" ever again!
+
+## 🎯 Why Shelldog?
 
 Ever found yourself thinking:
+- "What was that curl command I ran last week?"
+- "How did I set up this environment again?"
+- "I need to write documentation... if only I could remember what I did!"
+- "What commands did I run before that bug appeared?"
 
-- 🤔 "What was that magic command I ran yesterday that fixed everything?"
-- 😱 "Did I just accidentally leak an API key in my command history?"
-- 🔍 "Which Python packages did I install for this project again?"
-- 📝 "I wish I had a better record of my development workflow..."
+**Shelldog sits quietly in the background and remembers EVERYTHING for you!** 🧠
 
-**Shelldog to the rescue!** It's your silent development diary that works in the background, making sure you never lose track of your commands while keeping your secrets safe.
+### ✨ Features
 
-## ✨ Features
+- 🤫 **Silent Tracking** - Works invisibly without cluttering your terminal
+- 🔒 **Privacy First** - Automatically masks passwords, tokens, and API keys
+- 🎯 **Smart Detection** - Knows when you're in a virtual environment
+- 📁 **Project-Level Logs** - Each venv gets its own history file at the project root
+- 🎭 **Personality** - Because who says CLI tools have to be boring?
+- 🚀 **Zero Performance Impact** - Logs asynchronously in the background
+- 🌈 **Both Bash & Zsh** - Works with your favorite shell
 
-### 🐕‍🦺 Smart Command Tracking
-- **Silent Operation**: Works in the background without interrupting your flow
-- **Intelligent Filtering**: Logs development commands, ignores noise (`cd`, `ls`, etc.)
-- **Virtual Environment Aware**: Separate logs for each project/venv
-- **Cross-Platform**: Works with Bash and Zsh
+## 📦 Installation
 
-### 🔒 Security First
-- **Automatic Masking**: Sensitive data like passwords, API keys, and tokens are automatically masked
-- **Export Protection**: Environment variables are logged but their values are hidden
-- **No Data Leaks**: Your secrets stay secret while maintaining command context
-
-### 🎨 Developer Experience
-- **Fun & Friendly**: Enjoy delightful dog-themed messages and ASCII art
-- **Easy Commands**: Simple CLI with intuitive subcommands
-- **Project-Level Logging**: History files live with your project (like `requirements.txt`)
-- **Rich History**: View, filter, and analyze your command history
-
-### 📊 Insights & Analytics
-- **Command Statistics**: See your most-used commands and patterns
-- **Time-based Filtering**: View today's commands or tail recent entries
-- **Project Context**: Understand your workflow across different environments
-
-## 🚀 Quick Start
-
-### Installation
+### Quick Install
 
 ```bash
 pip install shelldog
 ```
 
-### Basic Usage
+### From Source
 
 ```bash
-# Start tracking in your project
+git clone https://github.com/Ansumanbhujabal/shelldog.git
+cd shelldog
+pip install -e .
+```
+
+## 🚀 Quick Start
+
+### 1. Start Tracking
+
+```bash
+# Wake up the dog!
 shelldog follow
 
-# Activate the hook in your current shell (IMPORTANT!)
-source venv/.shelldog/shelldog_hook.sh
-
-# Or use the one-liner for auto-activation
+# Activate tracking in your current shell
 eval "$(shelldog follow -q)"
 ```
 
-### See It in Action!
+That's it! Shelldog is now silently logging all your commands. 🎉
+
+### 2. View Your History
 
 ```bash
+# See everything
+shelldog log
+
+# Just today's commands
+shelldog log --today
+
+# Last 20 commands
+shelldog log -n 20
+```
+
+### 3. Check Status
+
+```bash
+shelldog status
+```
+
+## 🎮 Commands
+
+### Core Commands
+
+| Command | Description |
+|---------|-------------|
+| `shelldog follow` | Start tracking commands (activates the good boy!) |
+| `shelldog stop` | Stop tracking (sends doggo to sleep) |
+| `shelldog log` | View command history |
+| `shelldog status` | Check if Shelldog is watching |
+| `shelldog clear` | Clear command history |
+| `shelldog stats` | See cool statistics about your commands |
+
+### Fun Commands (Because Why Not?)
+
+| Command | Description |
+|---------|-------------|
+| `shelldog bark` | Make Shelldog bark! 🐕 |
+| `shelldog treat` | Give Shelldog a treat! 🦴 |
+| `shelldog goodboy` | Tell Shelldog he's a good boy! 🏆 |
+
+## 🔧 How It Works
+
+### The Magic Behind the Scenes
+
+1. **Shell Hook**: Shelldog installs a tiny hook in your shell (via `DEBUG` trap in Bash or `preexec` in Zsh)
+2. **Silent Logger**: Every command gets logged asynchronously - zero impact on your workflow
+3. **Smart Masking**: Sensitive data (passwords, tokens, API keys) are automatically masked
+4. **Venv Detection**: Automatically detects if you're in a virtual environment
+
+### Virtual Environment Awareness
+
+When you're in a virtual environment:
+- Shelldog creates `shelldog_history.txt` at your **project root** (next to your venv folder)
+- Each project gets its own command history
+- No more mixing up commands from different projects!
+
+```
+my-project/
+├── venv/
+│   └── .shelldog/          # Hidden config folder
+├── shelldog_history.txt     # Your project's command history! 📝
+├── src/
+└── README.md
+```
+
+### Privacy & Security
+
+Shelldog automatically masks sensitive information:
+
+```bash
+# What you type:
+export API_KEY=super_secret_key_123
+
+# What gets logged:
+export API_KEY=****
+```
+
+Protected patterns:
+- `export VARNAME=value` → `export VARNAME=****`
+- `--password`, `--token`, `--api-key`, `--secret`
+- Authorization headers in curl commands
+- And more!
+
+## 💡 Usage Examples
+
+### Example 1: Track Your Development Session
+
+```bash
+# Start your day
+cd my-project
+source venv/bin/activate
+eval "$(shelldog follow -q)"
+
+# Do your work
+git pull origin main
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+
+# Later, review what you did
+shelldog log --today
+```
+
+### Example 2: Debug Like a Pro
+
+```bash
+# Something broke! What did you do?
+shelldog log -n 50
+
+# Find that specific command
+shelldog log | grep docker
+
+# See statistics
+shelldog stats
+```
+
+### Example 3: Document Your Setup
+
+```bash
+# After setting up a new environment
+shelldog log > SETUP.md
+
+# Now you have automatic documentation! 📚
+```
+
+## 🎨 Example Output
+
+### Starting Shelldog
+
+```bash
+$ shelldog follow
+
 🐕 Woof! I'm watching you.
 
     Never forget what you did.
@@ -76,236 +205,199 @@ eval "$(shelldog follow -q)"
 ✓ Shelldog is now following your commands!
 
 📝 Commands will be logged to:
-   /path/to/your/project/shelldog_history.txt
+   /path/to/project/shelldog_history.txt
+   🎯 Project root level logging!
 
-🎉 Every great developer was once a beginner! 🌟
+🎉 Stay pawsitive! 🐾
+============================================================
+
+✓ Initialization complete!
+============================================================
+
+🐕 Activate the hook by running:
+   eval "$(shelldog follow -q)"
 ```
 
-Now go about your development work:
+### Viewing History
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-export DATABASE_URL="postgresql://user:secret@localhost/db"
-python manage.py migrate
-python manage.py runserver
-```
-
-Check your history:
-
-```bash
-shelldog log
+$ shelldog log -n 5
 
 🐕 Shelldog History:
 
 ================================================================================
-[2024-01-15 10:23:45] python3 -m venv venv
-[2024-01-15 10:23:52] source venv/bin/activate
-[2024-01-15 10:24:01] pip install -r requirements.txt
-[2024-01-15 10:24:15] export DATABASE_URL=****
-[2024-01-15 10:24:22] python manage.py migrate
-[2024-01-15 10:24:30] python manage.py runserver
+[2025-10-08 14:23:45] pip install requests
+[2025-10-08 14:24:12] python app.py
+[2025-10-08 14:25:33] git add .
+[2025-10-08 14:25:40] git commit -m "Add new feature"
+[2025-10-08 14:25:55] git push origin main
 ================================================================================
 
-📊 Total entries: 6
+📊 Total entries: 5
 🐕 *proud tail wag* I remembered everything!
 ```
 
-## 🛠️ Complete Command Reference
-
-### Core Commands
-
-| Command | Description | Example |
-|---------|-------------|---------|
-| `shelldog follow` | Start tracking commands | `shelldog follow` |
-| `shelldog log` | View command history | `shelldog log --today` |
-| `shelldog status` | Check tracking status | `shelldog status` |
-| `shelldog stop` | Stop tracking | `shelldog stop` |
-| `shelldog clear` | Clear history | `shelldog clear` |
-
-### Fun Commands 🎉
-
-| Command | What It Does | Response Example |
-|---------|--------------|------------------|
-| `shelldog bark` | Make Shelldog bark! | `🐕 BORK! Time to chase some bugs!` |
-| `shelldog treat` | Give a virtual treat | `🐕 *happy dance* TREAT! My favorite!` |
-| `shelldog goodboy` | Praise Shelldog | `🐕 *tail wagging* I'M A GOOD BOY!` |
-
-### Advanced Usage
+### Status Check
 
 ```bash
-# Show only last 10 commands
-shelldog log --tail 10
+$ shelldog status
 
-# Show only today's commands
-shelldog log --today
+🐕 Shelldog Status:
 
-# Check if everything is working
+==================================================
+Tracking enabled:    ✓ Yes
+Shell hook active:   ✓ Yes
+Virtual env:         ✓ Yes (venv-specific logging)
+Venv path:           /opt/CodeRepo/SideProjects/shelldog/venv
+Log file:            /opt/CodeRepo/SideProjects/shelldog/shelldog_history.txt
+Log file exists:     ✓ Yes
+Logged commands:     247
+==================================================
+
+✓ Shelldog is actively tracking your commands! 🐕
+   Every great developer was once a beginner! 🌟
+```
+
+## ⚙️ Configuration
+
+### Log File Locations
+
+- **In a venv**: `<project_root>/shelldog_history.txt`
+- **Global**: `~/.shelldog/shelldog_history.txt`
+
+### State Files
+
+Shelldog keeps its configuration in:
+- **In a venv**: `<venv>/.shelldog/`
+- **Global**: `~/.shelldog/`
+
+## 🤝 Shell Integration
+
+### Manual Activation
+
+If you want to manually control when Shelldog watches:
+
+```bash
+# Start tracking
+source ~/.shelldog/shelldog_hook.sh
+
+# Stop tracking
+source ~/.shelldog/shelldog_unhook.sh
+```
+
+### Add to Shell Profile (Optional)
+
+Want Shelldog to start automatically? Add to your `~/.bashrc` or `~/.zshrc`:
+
+```bash
+# Auto-start Shelldog in virtual environments
+if [[ -n "$VIRTUAL_ENV" ]]; then
+    eval "$(shelldog follow -q)" 2>/dev/null
+fi
+```
+
+## 🐛 Troubleshooting
+
+### "Shelldog is enabled but not logging!"
+
+Make sure the hook is active:
+
+```bash
 shelldog status
 
-# Get command statistics
-shelldog stats
-
-# Quiet mode for scripting
+# If hook is not active, run:
 eval "$(shelldog follow -q)"
 ```
 
-## 🔧 How It Works
+### "Commands are logged twice!"
 
-### Architecture
-
-```
-Your Shell → Shell Hook → Shelldog Logger → Project History File
-     │             │              │                 │
-     │             │              │                 └── shelldog_history.txt
-     │             │              └── Mask sensitive data
-     │             └── venv/.shelldog/shelldog_hook.sh
-     └── Intercepts commands via DEBUG trap (Bash) or preexec (Zsh)
-```
-
-### Security Features
-
-Shelldog automatically masks:
-- 🔑 Environment variables: `export API_KEY=secret` → `export API_KEY=****`
-- 🗝️ Passwords: `--password hunter2` → `--password ****`
-- 🔐 Tokens: `--token ghp_abc123` → `--token ****`
-- 🎫 API keys: `--api-key sk_live_abc123` → `--api-key ****`
-
-### Virtual Environment Support
-
-When you're in a virtual environment:
-- Hook scripts are stored in `venv/.shelldog/`
-- Command history is stored at project level: `./shelldog_history.txt`
-- Each project maintains its own independent history
-
-## 🐾 Use Cases
-
-### 🎓 Learning & Documentation
-Perfect for tutorials, workshops, or when learning new tools. Shelldog automatically documents your learning journey.
-
-### 🔧 Debugging & Troubleshooting
-Track the exact sequence of commands that led to a bug or solution. Never lose that "magic fix" again!
-
-### 🚀 Onboarding & Knowledge Sharing
-New team members can see the common commands and workflows used in your project.
-
-### 📚 Personal Development Journal
-Keep a record of your growth as a developer and the tools you master over time.
-
-## 🛡️ Privacy & Security
-
-### What We Log
-- Command names and arguments (with sensitive data masked)
-- Timestamps
-- Project context
-
-### What We NEVER Log
-- Raw passwords, keys, or tokens
-- File contents
-- Private user data
-- Network traffic
-
-### Data Storage
-All data stays locally on your machine. No telemetry, no cloud storage, no funny business.
-
-## 🐕‍🦺 For Contributors
-
-We welcome fellow dog lovers and developers! Here's how you can help:
-
-### Development Setup
+This can happen if you source the hook multiple times. Run:
 
 ```bash
-# Fork and clone the repository
-git clone https://github.com/your-username/shelldog.git
-cd shelldog
-
-# Set up development environment
-python3 -m venv venv
-source venv/bin/activate
-pip install -e ".[dev]"
-
-# Test your changes
-pytest tests/
-```
-
-### Areas for Contribution
-- 🐛 Bug fixes and improvements
-- 🎨 Additional shell support (Fish, PowerShell, etc.)
-- 📊 Enhanced analytics and insights
-- 🔌 Plugin system for custom command handlers
-- 🎯 More intelligent command filtering
-- 🌐 Community translations for dog phrases
-
-### Code of Conduct
-We're a friendly pack! Please be respectful and inclusive in all interactions. Remember: every good boy and girl deserves treats and praise! 🦴
-
-## 📊 Example Workflow
-
-```bash
-# Start a new project
-mkdir my-awesome-project
-cd my-awesome-project
-
-# Initialize Shelldog
-shelldog follow
+shelldog stop
 eval "$(shelldog follow -q)"
-
-# Develop as usual
-python3 -m venv venv
-source venv/bin/activate
-pip install flask pandas numpy
-export FLASK_SECRET="super-secret-key"
-python app.py
-
-# Later, review your workflow
-shelldog log --today
-
-# Share your setup with teammates
-cat shelldog_history.txt
 ```
 
-## 🎉 Community & Support
+### "Shelldog logs its own commands!"
 
-### Get Help
-- 📖 Check the [documentation](https://github.com/your-username/shelldog/wiki)
-- 🐛 [Report issues](https://github.com/your-username/shelldog/issues)
-- 💡 [Request features](https://github.com/your-username/shelldog/issues)
-- 🐕 Share your Shelldog stories with #ShelldogOSS
+It shouldn't! Shelldog filters itself out. If you see this, please file a bug report! 🐛
 
-### Show Your Support
-If Shelldog has been a good boy and helped your workflow:
-- ⭐ Star the repository
-- 🐦 Share on social media
-- 🔗 Use in your projects
-- 🐛 Contribute code or documentation
+## 📝 What Gets Logged?
+
+### ✅ Logged
+- All shell commands
+- Script executions
+- Git commands
+- Package installations
+- Database migrations
+- Server starts/stops
+- Basically everything you type!
+
+### ❌ Not Logged
+- `shelldog` commands themselves
+- Internal shell functions
+- Empty commands
+- Shell initialization stuff
+
+## 🎓 Pro Tips
+
+1. **Review Daily**: `shelldog log --today` at the end of the day
+2. **Document Projects**: `shelldog log > COMMANDS.md` for documentation
+3. **Debug Sessions**: `shelldog log -n 50` to see recent commands
+4. **Find Patterns**: `shelldog stats` to see your most-used commands
+5. **Clean Slate**: `shelldog clear` when starting fresh
+
+## 🤔 FAQ
+
+**Q: Does Shelldog slow down my terminal?**  
+A: Nope! Logging happens asynchronously in the background. Zero performance impact.
+
+**Q: Is my sensitive data safe?**  
+A: Yes! Shelldog automatically masks passwords, tokens, and API keys.
+
+**Q: Can I use this in production?**  
+A: Shelldog is designed for development environments. Use caution in production!
+
+**Q: Does it work with tmux/screen?**  
+A: Yes! Each session tracks independently.
+
+**Q: What shells are supported?**  
+A: Bash and Zsh are fully supported.
+
+## 🎨 Why the Dog Theme?
+
+Because:
+1. Dogs are loyal (like your command history should be)
+2. Dogs remember everything (especially treats)
+3. Dogs are always happy to help
+4. CLI tools deserve more personality! 🎉
 
 ## 📄 License
 
-MIT License - feel free to use Shelldog in your projects! See [LICENSE](LICENSE) for details.
+MIT License - See LICENSE file for details
 
-## 🐕 Final Words from Shelldog
+## 🤝 Contributing
 
-> *wagging tail* 
->
-> "I'm just a simple dog trying to make the development world a better place. I don't ask for much - just an occasional `shelldog treat` and maybe a `shelldog goodboy` when I help you find that lost command.
->
-> Remember: I'm always here, silently watching, ready to help you track your journey from 'Hello World' to production deployment.
->
-> Woof woof! 🐾
->
-> — Your faithful development companion"
+Contributions are welcome! Feel free to:
+- 🐛 Report bugs
+- 💡 Suggest features
+- 🔧 Submit pull requests
+- 🎨 Improve documentation
+
+## 🙏 Acknowledgments
+
+Built with ❤️ by developers who got tired of asking "wait, what command did I just run?"
 
 ---
 
-**Ready to let Shelldog watch your back?** 
+<div align="center">
 
-```bash
-pip install shelldog
-cd your-project
-shelldog follow
+**Made with 🐕 and ☕ by Ansuman Bhujabala**
+
+If Shelldog helps you, give him a treat! ⭐ this repo
+
+```
+🐕 *tail wagging intensifies*
 ```
 
-Welcome to the pack! 🐕‍🦺❤️
-
-# 🐕 Shelldog
+</div>
