@@ -5,3 +5,8 @@ dist/
 build/
 venv/
 .shelldog/
+shelldog_config.json
+.DS_Store
+.idea/
+.vscode/
+shelldog_history.txt
