@@ -37,9 +37,9 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://github.com/Ansumanbhujabal/shelldog"
-"Bug Tracker": "https://github.com/Ansumanbhujabal/shelldog/issues"
-"Documentation": "https://github.com/Ansumanbhujabal/shelldog/blob/main/README.md"
-"Source Code": "https://github.com/Ansumanbhujabal/shelldog"
+"Bug Tracker" = "https://github.com/Ansumanbhujabal/shelldog/issues"
+"Documentation" = "https://github.com/Ansumanbhujabal/shelldog/blob/main/README.md"
+"Source Code" = "https://github.com/Ansumanbhujabal/shelldog"
 
 [project.scripts]
 shelldog = "shelldog.cli:cli"
