@@ -9,7 +9,7 @@
 ```
     /\_/\  
    ( o.o ) 
-    > ^ <   "Woof! I'm watching... silently."
+    > ^ <   "Woof! I'm watching... silently." --0.1.0--
 ```
 
 **Shelldog** is a silent, intelligent command tracker for your terminal. Think of it as your development diary that writes itself - tracking every command you run, so you never have to remember "what did I do yesterday?" ever again!
