@@ -1,23 +1,11 @@
-[2025-10-07 14:46:49] [ -n "$ZSH_VERSION" ]
-[2025-10-07 14:46:49] export SHELLDOG_ACTIVE=1
-[2025-10-07 14:47:06] export abc=****
-[2025-10-07 14:47:12] export okkk=****
-[2025-10-07 14:47:23] pip install flask
-[2025-10-07 14:51:09] clear
-[2025-10-07 14:51:44] git init
-[2025-10-07 14:52:02] git status
-[2025-10-07 14:52:28] git remote -v
-[2025-10-07 14:53:31] git commit -m " initil plan added "
-[2025-10-07 14:54:01] git commit -m " init file  added "
-[2025-10-07 14:54:13] git commit -m " cli file  added "
-[2025-10-07 14:54:35] git commit -m " logger file  added "
-[2025-10-07 14:54:50] git commit -m " hook file  added "
-[2025-10-07 14:54:59] git add .gitignore
-[2025-10-07 14:55:11] git commit -m " ignore file  added "
-[2025-10-07 14:55:17] clear
-[2025-10-07 14:55:26] git push origin main
-[2025-10-07 14:55:38] git pull
-[2025-10-07 14:57:30] git pull --rebase
-[2025-10-07 14:57:38] git status
-[2025-10-08 01:01:41] git status
-[2025-10-08 01:02:17] python3 test.py
+[2025-10-08 23:49:01] [ -n "$ZSH_VERSION" ]
+[2025-10-08 23:49:01] export SHELLDOG_ACTIVE=1
+[2025-10-08 23:49:24] clear
+[2025-10-08 23:49:37] ls --color=auto
+[2025-10-09 00:02:16] clear
+[2025-10-09 00:02:20] git pull
+[2025-10-09 00:02:26] clear
+[2025-10-09 00:02:34] touch requirements.txt
+[2025-10-09 00:02:48] pip freeze > requirements.txt
+[2025-10-09 00:03:26] git status
+[2025-10-09 00:03:45] git add .

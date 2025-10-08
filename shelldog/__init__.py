@@ -5,7 +5,7 @@ Shelldog - Silent command tracker for development environments
 """
 
 __version__ = "0.1.0"
-__author__ = "Your Name"
+__author__ = "Ansuman Bhujabala"
 __license__ = "MIT"
 
 from .logger import ShelldogLogger
